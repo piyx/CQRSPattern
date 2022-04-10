@@ -1,4 +1,5 @@
-﻿using UserApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using UserApi.Models;
 
 namespace UserApi.UserData
 {
@@ -9,31 +10,32 @@ namespace UserApi.UserData
         {
             _context = context;
         }
-        public void AddUser(User user)
+        public async Task AddUser(User user)
         {   
             _context.Users.Add(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void DeleteUser(User user)
+        public async Task DeleteUser(User user)
         {
             _context.Users.Remove(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public User GetUser(int id)
+        public async Task<User> GetUser(int id)
         {
-            return _context.Users.FirstOrDefault(x => x.Id == id);
+            return await _context.Users.FindAsync(id);
         }
 
-        public List<User> GetUsers()
+        public async Task<List<User>> GetUsers()
         {
-            return _context.Users.ToList();
+            return await _context.Users.ToListAsync();
         }
 
-        public void UpdateUser(User user)
+        public async Task UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
         }
     }
 }
