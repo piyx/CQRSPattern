@@ -1,5 +1,7 @@
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using UserApi.Models;
+using UserApi.UserData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,13 @@ var connectionString = builder
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 28));
 builder.Services.AddDbContextPool<UserContext>(
     options => options.UseMySql(connectionString, serverVersion));
+
+
+// Register Dependency Injection for UserData
+builder.Services.AddScoped<IUserData, SqlUserData>();
+
+
+builder.Services.AddMediatR(typeof(Program));
 
 
 var app = builder.Build();

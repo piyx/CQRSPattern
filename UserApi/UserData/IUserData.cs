@@ -6,7 +6,7 @@ namespace UserApi.UserData
     {
         Task<List<User>> GetUsersAsync();
         Task<User> GetUserAsync(int id);
-        Task AddUserAsync(User user);
+        Task<int> AddUserAsync(User user);
         Task UpdateUserAsync(User user);
         Task DeleteUserAsync(User user);
     }

@@ -1,20 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace UserApi.Models
+namespace UserApi.Resources
 {
-    public class User
+    public class UserResource 
     {
-        [Key]
-        public int Id { get; set; }
-        
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }
-        
+
         [Required]
         [MaxLength(50)]
         public string LastName { get; set; }
-        
+
         [Required]
         [MaxLength(100)]
         public string Email { get; set; }

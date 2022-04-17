@@ -6,14 +6,17 @@ namespace UserApi.UserData
     public class SqlUserData : IUserData
     {
         private UserContext _context;
+        
         public SqlUserData(UserContext context)
         {
             _context = context;
         }
-        public async Task AddUserAsync(User user)
-        {   
+        
+        public async Task<int> AddUserAsync(User user)
+        {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+            return user.Id;
         }
 
         public async Task DeleteUserAsync(User user)
