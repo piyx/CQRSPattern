@@ -1,12 +1,6 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using UserApi.Commands;
 using UserApi.Models;
 using UserApi.Queries;
@@ -19,12 +13,10 @@ namespace UserApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserData _userData;
         private readonly IMediator _mediator;
 
         public UsersController(IUserData userData, IMediator mediator)
         {
-            _userData = userData;
             _mediator = mediator;
         }
 
