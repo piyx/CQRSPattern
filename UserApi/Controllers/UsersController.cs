@@ -15,7 +15,7 @@ namespace UserApi.Controllers
     {
         private readonly IMediator _mediator;
 
-        public UsersController(IUserData userData, IMediator mediator)
+        public UsersController(IMediator mediator)
         {
             _mediator = mediator;
         }
